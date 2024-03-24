@@ -12,12 +12,15 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-    implementation("io.ktor:ktor-server-core:1.6.7")
-    implementation("io.ktor:ktor-server-netty:1.6.7")
-    implementation("io.ktor:ktor-features:1.6.7") // Include the features module for CallLogging
-    implementation("ch.qos.logback:logback-classic:1.2.6") // Logging backend (optional)
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.31")
-    implementation("io.ktor:ktor-gson:1.6.7") // Optional for Gson JSON serialization support
+    implementation("io.ktor:ktor-server-core:2.3.9")
+    implementation("io.ktor:ktor-server-netty:2.3.9")
+    implementation("io.ktor:ktor-server-content-negotiation:2.3.9")
+    implementation("io.ktor:ktor-features:1.6.8") // Include the features module for CallLogging
+    implementation("ch.qos.logback:logback-classic:1.5.3") // Logging backend (optional)
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.23")
+    implementation("io.ktor:ktor-serialization-gson:2.3.9")// Optional for Gson JSON serialization support
+    implementation("com.google.firebase:firebase-admin:9.2.0")
+    implementation("com.google.guava:guava:33.1.0-jre") // FireBase-admin 9.2.0 uses guava 31.1-jre which have vulnerabilities
 
 }
 

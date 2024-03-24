@@ -1,3 +1,3 @@
 package controller.request
 
-data class LoginRequest (val matricula: Int, val senha: String)
+data class LoginRequest (val matricula: String, val senha: String)

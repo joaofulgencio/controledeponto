@@ -13,5 +13,5 @@ suspend fun <T> ApiFuture<T>.await(): T = suspendCancellableCoroutine { continua
         } catch (e: Exception) {
             continuation.resumeWithException(e)
         }
-    }, MoreExecutors.directExecutor())  // Execute the callback in the thread that completes the future
+    }, MoreExecutors.directExecutor())
 }

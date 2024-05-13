@@ -7,6 +7,7 @@ group = "org.equipet0209.com"
 version = "1.0-SNAPSHOT"
 
 repositories {
+    google()
     mavenCentral()
 }
 
@@ -21,6 +22,8 @@ dependencies {
     implementation("io.ktor:ktor-serialization-gson:2.3.9")// Optional for Gson JSON serialization support
     implementation("com.google.firebase:firebase-admin:9.2.0")
     implementation("com.google.guava:guava:33.1.0-jre") // FireBase-admin 9.2.0 uses guava 31.1-jre which have vulnerabilities
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1") // Verifique a versão mais recente
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")
 
 }
 

@@ -11,7 +11,7 @@ class FireStoreLoginRepository(private val db: Firestore): LoginRepository {
         val funcionariosCollection = db.collection("funcionarios")
 
         val query = funcionariosCollection.
-        whereEqualTo("matricula", matricula)
+        whereEqualTo("email", matricula)
             .whereEqualTo("senha", password)
             .get()
             .get()

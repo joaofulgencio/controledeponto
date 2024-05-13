@@ -1,28 +1,28 @@
-import config.firebase.firebaseInitializer
 import controller.loginRoutes
-    import io.ktor.server.engine.*
-    import io.ktor.server.netty.*
-    import config.gsonModuleConfig
-import database.repository.FireStoreLoginRepository
+import io.ktor.server.engine.*
+import io.ktor.server.netty.*
+import config.gsonModuleConfig
+import controller.cadastroRoutes
+import di.DIContainer
 import io.ktor.server.application.*
-    import io.ktor.server.routing.routing
-import usecase.LoginUseCase
+import io.ktor.server.routing.routing
 
 
 fun main() {
-        val fireStore = firebaseInitializer()
-        val loginRepository = FireStoreLoginRepository(fireStore)
-        val loginUseCase = LoginUseCase(loginRepository)
+
+        val di = DIContainer()
         val server = embeddedServer(Netty, port = 8080) {
-            moduleAndRouting(loginUseCase)
+            moduleAndRouting(di)
         }
         server.start(wait = true)
     }
 
-    private fun Application.moduleAndRouting(loginUseCase: LoginUseCase) {
+    private fun Application.moduleAndRouting(di: DIContainer) {
         gsonModuleConfig()
 
         routing {
-            loginRoutes(loginUseCase)
+            loginRoutes(di.loginUseCase)
+            cadastroRoutes(di.cadastrarUseCase)
         }
     }
+

@@ -1,3 +1,3 @@
 package controller.request
 
-data class BaterPontoRequest(val email: String, val dia: String, val mes: String, val ano: String, val entrada: String, val saida: String)
+data class BaterPontoRequest(val email: String, val dataDoPonto: String, val entrada: String, val saida: String)

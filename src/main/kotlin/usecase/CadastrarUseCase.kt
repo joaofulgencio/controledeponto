@@ -1,8 +1,6 @@
 package usecase
 
-import controller.response.LoginResponse
 import database.repository.CadastrarRepository
-import database.repository.LoginRepository
 
 class CadastrarUseCase(val cadastrarRepository: CadastrarRepository) {
 

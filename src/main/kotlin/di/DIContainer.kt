@@ -22,7 +22,6 @@ class DIContainer {
         FireStoreBaterPontoRepository(fireStore)
     }
 
-
     val relatorioRepository: RelatorioRepository by lazy {
         FireStoreRelatorioRepository(fireStore)
     }

@@ -7,18 +7,16 @@ import kotlinx.coroutines.tasks.await
 
 
 interface BaterPontoRepository {
-    suspend fun execute(email: String, dia: String, mes: String, ano:  String, entrada: String, saida: String)
+    suspend fun execute(email: String, dataDoPonto: String, entrada: String, saida: String)
 }
 class FireStoreBaterPontoRepository(private val db: Firestore): BaterPontoRepository {
 
-    override suspend fun execute(email: String, dia: String, mes: String, ano:  String, entrada: String, saida: String) {
+    override suspend fun execute(email: String, dataDoPonto: String, entrada: String, saida: String) {
        try {
            val controlePontosCollection = db.collection("controle_pontos").document()
            val baterPonto = hashMapOf(
                "email" to email,
-               "dia" to dia,
-               "mes" to mes,
-               "ano" to ano,
+               "dataDoPonto" to dataDoPonto,
                "entrada" to entrada,
                "saida" to saida
                )

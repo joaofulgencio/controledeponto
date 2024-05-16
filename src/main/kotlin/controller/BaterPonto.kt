@@ -1,7 +1,6 @@
 package controller
 
 import controller.request.BaterPontoRequest
-import controller.request.CadastrarRequest
 import exceptions.UnprocessableEntityException
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -9,7 +8,6 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import usecase.BaterPontoUseCase
-import usecase.CadastrarUseCase
 
 fun Route.baterPontoRoutes(baterPontoUseCase: BaterPontoUseCase) {
 
@@ -18,9 +16,7 @@ fun Route.baterPontoRoutes(baterPontoUseCase: BaterPontoUseCase) {
             val baterPontoBody = call.receive<BaterPontoRequest>()
             baterPontoUseCase.execute(
                 baterPontoBody.email,
-                baterPontoBody.dia,
-                baterPontoBody.mes,
-                baterPontoBody.ano,
+                baterPontoBody.dataDoPonto,
                 baterPontoBody.entrada,
                 baterPontoBody.saida
             )

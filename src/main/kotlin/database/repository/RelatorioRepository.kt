@@ -2,10 +2,8 @@ package database.repository
 
 import com.google.cloud.firestore.Firestore
 import domain.Relatorio
-import domain.User
-import exceptions.UnprocessableEntityException
 import extension.await
-import kotlinx.coroutines.tasks.await
+
 
 
 interface RelatorioRepository {

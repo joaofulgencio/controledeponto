@@ -1,9 +1,7 @@
 package usecase
 
-import database.repository.BaterPontoRepository
 import database.repository.RelatorioRepository
 import domain.Relatorio
-import java.time.Instant
 
 class RelatorioUseCase(val relatorioRepository: RelatorioRepository) {
 

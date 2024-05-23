@@ -2,10 +2,7 @@ package di
 
 import config.firebase.firebaseInitializer
 import database.repository.*
-import usecase.BaterPontoUseCase
-import usecase.CadastrarUseCase
-import usecase.LoginUseCase
-import usecase.RelatorioUseCase
+import usecase.*
 
 class DIContainer {
     private val fireStore = firebaseInitializer()
@@ -26,6 +23,10 @@ class DIContainer {
         FireStoreRelatorioRepository(fireStore)
     }
 
+    val funcionariosRepository: FuncionariosRepository by lazy {
+        FireStoreFuncionariosRepository(fireStore)
+    }
+
     val loginUseCase: LoginUseCase by lazy {
         LoginUseCase(loginRepository)
     }
@@ -40,6 +41,10 @@ class DIContainer {
 
     val relatorioUseCase: RelatorioUseCase by lazy {
         RelatorioUseCase(relatorioRepository)
+    }
+
+    val buscarFuncionariosUseCase: BuscarFuncionariosUseCase by lazy {
+        BuscarFuncionariosUseCase(funcionariosRepository)
     }
 
 }

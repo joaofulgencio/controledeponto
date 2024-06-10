@@ -6,6 +6,7 @@ data class User(
     val matricula: String = "",
     val email: String = "",
     val departamento: String = "",
-    val cargo: String = ""
+    val cargo: String = "",
+    val tipo: Int = 1
 )
 

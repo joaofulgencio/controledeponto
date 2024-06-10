@@ -14,12 +14,14 @@ fun Route.cadastroRoutes(cadastrarUseCase: CadastrarUseCase) {
     post("/registrar") {
         try {
             val cadastrarBody = call.receive<CadastrarRequest>()
+            val tipo = cadastrarBody.tipo ?: 1
             cadastrarUseCase.execute(
                 cadastrarBody.cpf,
                 cadastrarBody.email,
                 cadastrarBody.nome,
                 cadastrarBody.departamento,
-                cadastrarBody.senha
+                cadastrarBody.senha,
+                tipo
             )
             call.respond(HttpStatusCode.OK)
         } catch (e: UnprocessableEntityException) {

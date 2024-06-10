@@ -1,11 +1,12 @@
 package usecase
 
 import controller.response.LoginResponse
+import database.repository.LoginReactiveRepository
 import database.repository.LoginRepository
 
-class LoginUseCase(val loginRepository: LoginRepository) {
+class LoginReactiveUseCase(val loginRepository: LoginReactiveRepository) {
 
-    fun execute(matricula: String, senha: String) : LoginResponse {
+    suspend fun execute(matricula: String, senha: String) : LoginResponse {
         val user = loginRepository.execute(matricula, senha)
         return if (user != null) {
             LoginResponse(true, user.email, "Login efetuado com sucesso", user.tipo)

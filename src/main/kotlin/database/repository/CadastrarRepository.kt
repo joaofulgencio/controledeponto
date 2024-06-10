@@ -7,11 +7,11 @@ import kotlinx.coroutines.tasks.await
 
 
 interface CadastrarRepository {
-    suspend fun execute(cpf: String, email: String, nome: String, departamento: String, senha: String)
+    suspend fun execute(cpf: String, email: String, nome: String, departamento: String, senha: String, tipo: Int)
 }
 class FireStoreCadastrarRepository(private val db: Firestore): CadastrarRepository {
 
-    override suspend fun execute(cpf: String, email: String, nome: String, departamento: String, senha: String) {
+    override suspend fun execute(cpf: String, email: String, nome: String, departamento: String, senha: String, tipo: Int) {
        try {
            val documentId = "$cpf-$email"
            val funcionariosCollection = db.collection("funcionarios").document(documentId)
@@ -21,7 +21,7 @@ class FireStoreCadastrarRepository(private val db: Firestore): CadastrarReposito
                "nome" to nome,
                "departamento" to departamento,
                "senha" to senha,
-
+               "tipo" to tipo
                )
 
            val result = funcionariosCollection.create(user as Map<String, String>).await()

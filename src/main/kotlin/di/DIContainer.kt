@@ -2,7 +2,10 @@ package di
 
 import config.firebase.firebaseInitializer
 import database.repository.*
+import database.repository.flow.FireStoreFlowFuncionariosRepository
+import database.repository.flow.FuncionariosFlowRepository
 import usecase.*
+import usecase.flow.BuscarFuncionariosFlowUseCase
 
 class DIContainer {
     private val fireStore = firebaseInitializer()
@@ -27,8 +30,20 @@ class DIContainer {
         FireStoreFuncionariosRepository(fireStore)
     }
 
+    val funcionariosFlowRepository: FuncionariosFlowRepository by lazy {
+        FireStoreFlowFuncionariosRepository(fireStore)
+    }
+
+    val loginReactiveRepository: LoginReactiveRepository by lazy {
+        FireStoreLoginReactiveRepository(fireStore)
+    }
+
     val loginUseCase: LoginUseCase by lazy {
         LoginUseCase(loginRepository)
+    }
+
+    val loginReactiveUseCase: LoginReactiveUseCase by lazy {
+        LoginReactiveUseCase(loginReactiveRepository)
     }
 
     val cadastrarUseCase: CadastrarUseCase by lazy {
@@ -45,6 +60,10 @@ class DIContainer {
 
     val buscarFuncionariosUseCase: BuscarFuncionariosUseCase by lazy {
         BuscarFuncionariosUseCase(funcionariosRepository)
+    }
+
+    val buscarFuncionariosFlowUseCase: BuscarFuncionariosFlowUseCase by lazy {
+        BuscarFuncionariosFlowUseCase(funcionariosFlowRepository)
     }
 
 }

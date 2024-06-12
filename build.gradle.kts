@@ -26,6 +26,7 @@ dependencies {
     implementation("com.google.guava:guava:33.1.0-jre") // FireBase-admin 9.2.0 uses guava 31.1-jre which have vulnerabilities
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1") // Verifique a versão mais recente
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")
+    implementation("io.github.cdimascio:dotenv-kotlin:6.4.1")
     implementation("io.grpc:grpc-netty-shaded:1.51.0")
     implementation("io.grpc:grpc-core:1.51.0")
     implementation("io.grpc:grpc-stub:1.51.0")

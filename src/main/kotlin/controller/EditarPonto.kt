@@ -1,24 +1,24 @@
 package controller
 
-import controller.request.BaterPontoRequest
+import controller.request.EditarPontoRequest
 import exceptions.UnprocessableEntityException
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import usecase.BaterPontoUseCase
+import usecase.EditarPontoUseCase
 
-fun Route.editarPontoRoutes(baterPontoUseCase: BaterPontoUseCase) {
+fun Route.editarPontoRoutes(editarPontoUseCase: EditarPontoUseCase) {
 
-    post("/baterPonto") {
+    post("/editarPonto") {
         try {
-            val baterPontoBody = call.receive<BaterPontoRequest>()
-            baterPontoUseCase.execute(
-                baterPontoBody.email,
-                baterPontoBody.dataDoPonto,
-                baterPontoBody.entrada,
-                baterPontoBody.saida
+            val editarPontoRequest = call.receive<EditarPontoRequest>()
+            editarPontoUseCase.execute(
+                editarPontoRequest.email,
+                editarPontoRequest.dataDoPonto,
+                editarPontoRequest.entrada,
+                editarPontoRequest.saida
             )
             call.respond(HttpStatusCode.OK)
         } catch (e: UnprocessableEntityException) {

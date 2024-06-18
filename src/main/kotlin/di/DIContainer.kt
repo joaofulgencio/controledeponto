@@ -22,6 +22,10 @@ class DIContainer {
         FireStoreBaterPontoRepository(fireStore)
     }
 
+    val editarPontoRepository: EditarPontoRepository by lazy {
+        FireStoreEditarPontoRepository(fireStore)
+    }
+
     val relatorioRepository: RelatorioRepository by lazy {
         FireStoreRelatorioRepository(fireStore)
     }
@@ -52,6 +56,10 @@ class DIContainer {
 
     val baterPontoUseCase: BaterPontoUseCase by lazy {
         BaterPontoUseCase(baterPontoRepository)
+    }
+
+    val editarPontoUseCase: EditarPontoUseCase by lazy {
+        EditarPontoUseCase(editarPontoRepository)
     }
 
     val relatorioUseCase: RelatorioUseCase by lazy {
